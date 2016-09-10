@@ -25,7 +25,7 @@ def main():
 def sync():
 	while True:
 		try:
-			tp = paramiko.Transport((settings.IP, 22))
+			tp = paramiko.Transport((auth.IP, 22))
 			tp.connect(username = auth.USER, password = auth.PASS)
 			sftp = paramiko.SFTPClient.from_transport(tp)
 		except:
