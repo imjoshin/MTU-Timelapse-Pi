@@ -17,7 +17,8 @@ if [ "$_IP" ]; then
   printf "My IP address is %s\n" "$_IP"
 fi
 
-sudo python /home/pi/sendIP.py
+#send IP to email
+/bin/su pi -c "sudo python /home/pi/MTU-Timelapse-Pi/sendIP.py"
 
 #start cam
 /bin/su pi -c "screen -S CAMERA -d -m sudo python /home/pi/MTU-Timelapse-Pi/cam.py"

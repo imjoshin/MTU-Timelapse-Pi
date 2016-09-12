@@ -1,11 +1,14 @@
 from time import sleep
 from subprocess import call
 from datetime import datetime
-import auth, settings, os, paramiko, sys, signal, errno, socket
+import auth, settings, os, paramiko, time, sys, signal, errno, socket
 from threading import Thread
 
 
 def main():
+	ts = time.time()
+	with open("/home/pi/cam.log", "a") as myfile:
+    		myfile.write("Started at %s\n" % datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S'))
 	while(True):
 		while(datetime.now().minute % settings.INTERVAL != 0):
 			sleep(1)
