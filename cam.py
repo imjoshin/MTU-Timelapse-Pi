@@ -22,7 +22,11 @@ def main():
 			os.makedirs(directory, mode=0777)
 
 		call(settings.CMD % (date, hour, minute), shell=True)
-		os.chmod("%s/%s-%s.jpg" % (directory, hour, minute), 777)
+		try:
+			os.chmod("%s/%s-%s.jpg" % (directory, hour, minute), 777)
+		except Exception:
+			print "Cannot set permissions on %s/%s-%s.jpg" % (directory, hour, minute)
+
 		sleep(65)
 
 
