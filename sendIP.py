@@ -1,4 +1,12 @@
-import smtplib, auth, subprocess
+import smtplib, auth, subprocess, urllib2
+
+
+while True:
+        try:
+            response = urllib2.urlopen('http://google.com',timeout=1)
+            break
+        except urllib2.URLError:
+            pass
 
 ip = subprocess.Popen("wget http://ipinfo.io/ip -qO -", shell=True, stdout=subprocess.PIPE).communicate()[0]
 

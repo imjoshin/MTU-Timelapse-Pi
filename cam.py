@@ -19,9 +19,10 @@ def main():
 
 		directory = "%s/cam/%s" % (settings.LOCAL, date)
 		if not os.path.exists(directory):
-			os.makedirs(directory)
+			os.makedirs(directory, mode=0777)
 
 		call(settings.CMD % (date, hour, minute), shell=True)
+		os.chmod("%s/%s-%s.jpg" % (directory, hour, minute), 777)
 		sleep(65)
 
 
